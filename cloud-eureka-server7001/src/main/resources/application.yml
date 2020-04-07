@@ -1,0 +1,17 @@
+server:
+  port: 7001
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  client:
+    register-with-eureka: true  #注册到eureka中
+    fetch-registry: true  #是否抓取注册信息，配合ribbon进行负载均衡
+    service-url:
+      defaultZone: http://eureka1.com:7001/eureka/,http://eureka2.com:7002/eureka/
+  instance:
+    instance-id: eureka7001
+    prefer-ip-address: true
+

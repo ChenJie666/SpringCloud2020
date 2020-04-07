@@ -15,10 +15,12 @@ import javax.annotation.Resource;
 @Slf4j(topic = "OrderController")
 public class OrderController {
 
-    public static final String PAYMENT_URL = "http://localhost:8001";
+//    public static final String PAYMENT_URL = "http://localhost:8001";
+    public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
 
     @Resource
     private RestTemplate restTemplate;
+
 
     @PostMapping(value = "/consumer/payment/create")
     public CommonResult<Integer> create(Payment payment) {
@@ -30,5 +32,7 @@ public class OrderController {
     public CommonResult<Payment> getPaymentById(@PathVariable Long id) {
         return restTemplate.getForObject(PAYMENT_URL + "/payment/getPaymentById/" + id, CommonResult.class);
     }
+
+
 
 }
