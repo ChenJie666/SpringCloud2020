@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public interface PaymentDao {
 
-    int create(PaymentDao paymentDao);
+    int create(Payment payment);
 
     Payment getPaymentById(@Param("id") Long id);
 

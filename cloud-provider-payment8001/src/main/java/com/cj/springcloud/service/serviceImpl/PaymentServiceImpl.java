@@ -4,10 +4,12 @@ import com.cj.springcloud.dao.PaymentDao;
 import com.cj.springcloud.entities.CommonResult;
 import com.cj.springcloud.entities.Payment;
 import com.cj.springcloud.service.PaymentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j(topic = "PaymentServiceImpl")
 public class PaymentServiceImpl implements PaymentService {
 
     @Autowired
@@ -15,11 +17,12 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public CommonResult<Integer> create(Payment payment) {
-        int result = paymentDao.create(paymentDao);
+        log.info(payment.toString());
+        int result = paymentDao.create(payment);
         if(result == 0){
-            return new CommonResult<Integer>(444, "failed", result);
+            return new CommonResult<Integer>(444, "fail", result);
         }else {
-            return new CommonResult<Integer>(200, "sucessed", result);
+            return new CommonResult<Integer>(200, "success", result);
         }
     }
 
@@ -27,7 +30,7 @@ public class PaymentServiceImpl implements PaymentService {
     public CommonResult<Payment> getPaymentById(Long id) {
         Payment result = paymentDao.getPaymentById(id);
         if(result == null){
-            return new CommonResult<Payment>(444,"failed",null);
+            return new CommonResult<Payment>(444,"fail",null);
         }else{
             return new CommonResult<Payment>(200,"success",result);
         }
