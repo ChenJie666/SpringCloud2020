@@ -48,4 +48,14 @@ public class PaymentController {
         return discoveryClient;
     }
 
+    @GetMapping(value = "/payment/timeoutTest")
+    public CommonResult<Object> timeoutTest(){
+        try {
+            Thread.sleep(3000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new CommonResult<Object>(200, "timeoutTest");
+    }
+
 }
