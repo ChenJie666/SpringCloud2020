@@ -41,4 +41,10 @@ public class OrderFeignHystrixController {
         return "线程池： " + Thread.currentThread().getName() + "  消费者端统一降级处理方法";
     }
 
+
+    @GetMapping(value = "/consumer/payment/hystrix/circuit/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id){
+        return paymentFeignHystrixService.paymentCircuitBreaker(id);
+    }
+
 }
