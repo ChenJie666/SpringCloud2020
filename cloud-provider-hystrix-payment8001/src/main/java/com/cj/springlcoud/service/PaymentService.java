@@ -3,6 +3,7 @@ package com.cj.springlcoud.service;
 import cn.hutool.core.util.IdUtil;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -11,8 +12,11 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class PaymentService {
 
+    @Value(value = "${server.port}")
+    private String port;
+
     public String paymentInfo_OK(Integer id) {
-        return "线程池： " + Thread.currentThread().getName()+"   paymentInfo_OK,id  " + id;
+        return "port:" + port + "    线程池： " + Thread.currentThread().getName()+"   paymentInfo_OK,id  " + id;
     }
 
     @HystrixCommand(fallbackMethod = "paymentInfo_TimeOutHandler",commandProperties = {
@@ -25,11 +29,11 @@ public class PaymentService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "线程池： " + Thread.currentThread().getName()+"   paymentInfo_timeout,id  " + id;
+        return "port:" + port + "    线程池： " + Thread.currentThread().getName()+"   paymentInfo_timeout,id  " + id;
     }
 
     public String paymentInfo_TimeOutHandler(Integer id) {
-        return "线程池： " + Thread.currentThread().getName()+"  系统繁忙或出现异常,id  " + id;
+        return "port:" + port + "    线程池： " + Thread.currentThread().getName()+"  系统繁忙或出现异常,id  " + id;
     }
 
     // 服务熔断
@@ -46,11 +50,11 @@ public class PaymentService {
         }
         String serialNumber = IdUtil.simpleUUID();  //返回不带"-"号的UUID
 
-        return Thread.currentThread().getName() + "\t" + "调用成功，流水号：" + serialNumber;
+        return "port:" + port + "    线程池： " + Thread.currentThread().getName() + "\t" + "调用成功，流水号：" + serialNumber;
     }
 
     public String paymentCircuitBreaker_fallback(Integer id){
-        return "线程池： " + Thread.currentThread().getName()+"  配置熔断器的服务繁忙或出现异常,id  " + id;
+        return "port:" + port + "    线程池： " + Thread.currentThread().getName()+"  配置熔断器的服务繁忙或出现异常,id  " + id;
     }
 
 }

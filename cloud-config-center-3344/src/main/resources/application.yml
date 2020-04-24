@@ -1,0 +1,41 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          #uri: git@github.com:ChenJie666/springcloud-config-file.git #GitHub上的仓库名字
+          uri: https://github.com/ChenJie666/springcloud-config-file.git
+          username: chenjie666
+          password: 88596532xx
+          search-paths:
+            - springcloud-config  #搜索目录
+      label: master #读取分支
+
+## rabbitmq相关配置
+  rabbitmq:
+    host: 116.62.148.11
+    port: 5672
+    username: guest
+    password: guest
+
+## 暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka1.com:7001/eureka/,http://eureka2.com:7002/eureka/
+  instance:
+    instance-id: springcloud-config
+    prefer-ip-address: true

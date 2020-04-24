@@ -1,0 +1,36 @@
+server:
+  port: 3355
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      # http://localhost:3344/master/config-dev.yml
+      label: master #分支名称
+      name: config  #GitHub上的配置文件名为config-dev.yml，对应{name}-{profile}.yml
+      profile: dev
+      uri: http://localhost:3344  #配置中心的地址
+
+  rabbitmq:
+    host: 116.62.148.11
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka1.com:7001/eureka/,http://eureka2.com:7002/eureka/
+  instance:
+    instance-id: spring-config-client
+    prefer-ip-address: true
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
