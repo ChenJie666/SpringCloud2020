@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: cloud-prodiver-hystrix-payment
+  zipkin:
+    base-url: http://116.62.148.11:9411
+  sleuth:
+    sampler:
+    probability: 1
 
 eureka:
   client:

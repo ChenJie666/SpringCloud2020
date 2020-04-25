@@ -22,8 +22,11 @@
         <module name="cloud-provider-hystrix-payment8002" />
         <module name="cloud-provider-payment8001" />
         <module name="cloud-provider-payment8002" />
+        <module name="cloud-stream-rabbitmq-consumer8802" />
+        <module name="cloud-stream-rabbitmq-consumer8803" />
         <module name="cloud-stream-rabbitmq-provider8801" />
         <module name="cloud-stream-rabbitmq-provider8802" />
+        <module name="cloudalibaba-provider-payment9001" />
       </profile>
     </annotationProcessing>
   </component>
