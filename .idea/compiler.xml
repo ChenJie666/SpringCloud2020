@@ -30,8 +30,14 @@
         <module name="cloudalibaba-consumer-nacos-order83" />
         <module name="cloudalibaba-provider-payment9001" />
         <module name="cloudalibaba-provider-payment9011" />
+        <module name="cloudalibaba-sentinel-service8401" />
         <module name="cloudalibabaproviderpayment9001" />
+        <module name="seata-order-service2001" />
+        <module name="seata-storage-service2002" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloudalibaba-provider-payment9001" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

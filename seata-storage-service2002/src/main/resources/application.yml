@@ -1,0 +1,29 @@
+server:
+  port: 2002
+
+spring:
+  application:
+    name: seata-storage-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://192.168.32.128:8848/
+    alibaba:
+      seata:
+        tx-service-group:
+  datasource:
+    type:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://116.62.148.11:3306/seata_storage
+    username: root
+    password: abc123
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.cj.springcloud.alibaba.entities #实体类所在的包
+
+logging:
+  level:
+    io:
+      seata: info
+

@@ -1,5 +1,7 @@
 package com.cj.springcloud.controller;
 
+import com.cj.springcloud.entities.CommonResult;
+import com.cj.springcloud.entities.Payment;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,8 +14,11 @@ public class PaymentController {
     private String serverPort;
 
     @GetMapping(value = "/payment/nacos/{id}")
-    public String getPayment(@PathVariable("id") Integer id){
-        return "nacos registry , serverPort: " + serverPort + "\t id" + id;
+    public CommonResult<Payment> getPayment(@PathVariable("id") Long id) {
+        if (id == 4) {
+            throw new RuntimeException(serverPort + "服务异常");
+        }
+        return new CommonResult<>(200,"nacos registry , serverPort: " + serverPort + "\t id" + id);
     }
 
 }
