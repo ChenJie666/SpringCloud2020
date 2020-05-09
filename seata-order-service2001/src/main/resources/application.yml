@@ -11,7 +11,7 @@ spring:
     alibaba:
       seata:
         # 自定义事务组名称需要与seata-server中的对应
-        tx-service-group: fsp_tx_group
+        tx-service-group: my_test_tx_group
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource  #当前数据操作类型
     driver-class-name: org.gjt.mm.mysql.Driver  #mysql驱动包
@@ -32,3 +32,26 @@ logging:
   level:
     io:
       seata: info
+
+
+#seata:
+#  enabled: true
+#  application-id: applicationName
+#  tx-service-group: my_test_tx_group
+#  enable-auto-data-source-proxy: true
+#  config:
+#    type: nacos
+#    nacos:
+#      serverAddr: 192.168.32.128:8848
+#      group: SEATA_GROUP
+#      namespace:
+#      userName: "nacos"
+#      password: "nacos"
+#  registry:
+#    type: nacos
+#    nacos:
+#      application: seata-server
+#      server-addr: 192.168.32.128:8848
+#      namespace:
+#      userName: "nacos"
+#      password: "nacos"
