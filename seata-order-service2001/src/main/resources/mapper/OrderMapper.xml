@@ -13,7 +13,7 @@
     </resultMap>
     
     <insert id="create">
-        insert into t_order(id,userId,productId,count,money,status) values(null,#{user_id},#{product_id},#{count},#{money},0)
+        insert into t_order(id,user_id,product_id,count,money,status) values(null,#{userId},#{productId},#{count},#{money},0)
     </insert>
 
     <update id="update">

@@ -19,7 +19,8 @@ spring:
     password: abc123
 
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.cj.springcloud.alibaba.entities #实体类所在的包
 
 feign:
   hystrix:

@@ -8,6 +8,6 @@ import java.math.BigDecimal;
 @Mapper
 public interface AccountDao {
 
-    void descrese(@Param("userId") Long userId, @Param("money") BigDecimal money);
+    void descrease(@Param("userId") Long userId, @Param("money") BigDecimal money);
 
 }

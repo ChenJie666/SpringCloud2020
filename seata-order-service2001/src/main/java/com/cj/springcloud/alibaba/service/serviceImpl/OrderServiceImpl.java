@@ -5,6 +5,7 @@ import com.cj.springcloud.alibaba.entities.Order;
 import com.cj.springcloud.alibaba.service.AccountService;
 import com.cj.springcloud.alibaba.service.OrderService;
 import com.cj.springcloud.alibaba.service.StorageService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
+    @GlobalTransactional/*(name="my_test_tx_group",rollbackFor=Exception.class)*/
     public void createOrder(Order order) {
         //创建订单
         log.info("----->开始创建订单");
@@ -44,7 +46,6 @@ public class OrderServiceImpl implements OrderService {
         log.info("----->修改订单状态END");
 
         log.info("----->订单创建结束，o(0_0)o");
-
     }
 
 }

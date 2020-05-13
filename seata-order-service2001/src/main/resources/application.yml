@@ -22,12 +22,18 @@ spring:
     password: abc123
 
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  mapperLocations: classpath:mapper/*.xml
   type-aliases-package: com.cj.springcloud.alibaba.entities
 
 feign:
   hystrix:
     enabled: false
+  client:
+    config:
+      default:           #服务名，填写default为所有服务
+        connectTimeout: 1000
+        readTimeout: 12000
+
 logging:
   level:
     io:

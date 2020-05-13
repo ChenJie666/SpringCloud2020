@@ -9,7 +9,7 @@
         <result column="residue" property="residue" jdbcType="DECIMAL"/>
     </resultMap>
 
-    <update id="decrease">
+    <update id="descrease">
         UPDATE t_account
         SET
           residue = residue - #{money},used = used + #{money}
